@@ -28,7 +28,7 @@ const facultySchema = new mongoose.Schema(
     },
 
     Faculty_NIC: {
-      type: Number,
+      type: String,
       required: true,
     },
 
@@ -38,6 +38,15 @@ const facultySchema = new mongoose.Schema(
     },
 
     Faculty_Address: {
+      type: String,
+      required: true,
+    },
+    Faculty_Designation: {
+      type: String,
+      required: true,
+    },
+
+    role: {
       type: String,
       required: true,
     },

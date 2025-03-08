@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "f812dd50-b042-48ff-9726-bda0bd2b76d4",
+		"name": "LMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39943296"
+	},
+	"item": [
+		{
+			"name": "Subjects",
+			"item": [
+				{
+					"name": "Add Subject",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Subject_Id\" : \"ABC001\",\r\n    \"Subject_Name\" : \"MERN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}auth/add-subject",
+							"host": [
+								"{{base_url}}auth"
+							],
+							"path": [
+								"add-subject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Subjects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}auth/get-all-subjects",
+							"host": [
+								"{{base_url}}auth"
+							],
+							"path": [
+								"get-all-subjects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Subjects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}auth/get-subject?Subject_Id=POST001",
+							"host": [
+								"{{base_url}}auth"
+							],
+							"path": [
+								"get-subject"
+							],
+							"query": [
+								{
+									"key": "Subject_Id",
+									"value": "POST001"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Class Post",
+			"item": [
+				{
+					"name": "Add Class Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"post_id\": \"POST002\",\r\n    \"postName\":\"MERN RoadMap\",\r\n    \"attachDoc\": \"https://example.com/doc.jfif\",\r\n    \"subject\":\"67cb78075cdccc686d686057\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}auth/add-classpost",
+							"host": [
+								"{{base_url}}auth"
+							],
+							"path": [
+								"add-classpost"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Class Post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}auth/get-all-classpost",
+							"host": [
+								"{{base_url}}auth"
+							],
+							"path": [
+								"get-all-classpost"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}auth/get-classpost?PostId=POST001",
+							"host": [
+								"{{base_url}}auth"
+							],
+							"path": [
+								"get-classpost"
+							],
+							"query": [
+								{
+									"key": "PostId",
+									"value": "POST001"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

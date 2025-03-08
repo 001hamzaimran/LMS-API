@@ -17,12 +17,7 @@ const studentSchema = new mongoose.Schema(
       required: true,
     },
 
-    Classroom_status: {
-      type: String,
-      required: true,
-    },
-
-    status: {
+    Fees_status: {
       type: String,
       required: true,
     },
@@ -31,11 +26,38 @@ const studentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
+    Student_email: {
+      type: String,
+      required: true,
+    },
+
+    Guardian_Number: {
+      type: Number,
+      required: true,
+    },
+
+    Student_Contact: {
+      type: Number,
+      required: true,
+    },
+
+    Student_NIC: {
+      type: String,
+      required: true,
+    },
+    Student_Address: {
+      type: String,
+      required: true,
+    },
+    role: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
   }
 );
-
 
 export const studentModel = mongoose.model("students", studentSchema);
