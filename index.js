@@ -10,6 +10,7 @@ import { CoursesRoute } from "./Routes/CoursesRoutes.js";
 import { BatchRoute } from "./Routes/BatchRoute.js";
 import { ClassroomRoute } from "./Routes/ClassroomRoute.js";
 import { ensureAuthenticated } from "./Middlewares/ensureAuthenticated.js";
+import Tutorialrouter from "./Routes/TutorialRoute.js";
 
 dotenv.config();
 const app = express();
@@ -18,6 +19,7 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/uploads", express.static("uploads")); 
 
 const Routes = [
   SubjectRoute,
@@ -26,6 +28,7 @@ const Routes = [
   CoursesRoute,
   BatchRoute,
   ClassroomRoute,
+  Tutorialrouter
 ];
 
 // app.use("/auth",, SubjectRoute)
