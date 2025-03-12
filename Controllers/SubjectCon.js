@@ -37,3 +37,18 @@ export const getSingleSubject = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 }
+
+export const deleteSubject = async (req, res) => {
+  try {
+    const { Subject_Id } = req.query;
+    const subject = await Subject.findOne({ Subject_Id });
+    if (!subject) {
+      return res.status(404).json({ message: "Subject not found" });
+    }
+    await Subject.findOneAndDelete({ Subject_Id });
+    return res.status(200).json({ message: "Subject deleted" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: error.message });
+  }
+} 

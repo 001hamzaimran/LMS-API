@@ -42,7 +42,8 @@ const facultySchema = new mongoose.Schema(
       required: true,
     },
     Faculty_Designation: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Designation",
       required: true,
     },
 

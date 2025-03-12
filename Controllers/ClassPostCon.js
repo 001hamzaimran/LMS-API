@@ -57,3 +57,18 @@ export const getSingleClassPost = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+export const deleteClassPost = async (req, res) => {
+  try {
+    const { PostId } = req.query;
+    const classPost = await ClassPost.findOne({ post_id: PostId });
+    if (!classPost) {
+      return res.status(404).json({ message: "ClassPost not found" });
+    }
+    await ClassPost.findOneAndDelete({ post_id: PostId });
+    return res.status(200).json({ message: "ClassPost deleted" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: error.message });
+  }
+};

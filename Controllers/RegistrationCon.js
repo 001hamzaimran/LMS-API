@@ -1,5 +1,6 @@
 import FacultyModel from "../Models/FacultyModel.js";
 import { studentModel } from "../Models/StudentModel.js";
+import bcrypt from "bcryptjs";
 
 // ________________Faculty Registration________________
 
@@ -30,6 +31,9 @@ export const RegisterFaculty = async (req, res) => {
     ) {
       return res.status(400).json({ message: "All fields are required" });
     }
+
+    const salt = await bcrypt.genSalt(10);
+    Faculty_password = await bcrypt.hash(Faculty_password, salt);
 
     const findFaculty = await FacultyModel.findOne({
       $or: [{ Faculty_email }, { Faculty_Id }],
@@ -72,7 +76,7 @@ export const RegisterFaculty = async (req, res) => {
 
 export const getAllFaculty = async (req, res) => {
   try {
-    const faculties = await FacultyModel.find();
+    const faculties = await FacultyModel.find().populate("Faculty_Designation");
     return res.status(200).json({ faculties, message: "Faculties found" });
   } catch (error) {
     console.log(error);
@@ -83,7 +87,9 @@ export const getAllFaculty = async (req, res) => {
 export const getFaculty = async (req, res) => {
   try {
     const { Faculty_Id } = req.query;
-    const faculty = await FacultyModel.findOne({ Faculty_Id });
+    const faculty = await FacultyModel.findOne({ Faculty_Id }).populate(
+      "Faculty_Designation"
+    );
     if (!faculty) {
       return res.status(404).json({ message: "Faculty not found" });
     }
@@ -134,7 +140,7 @@ export const deleteFaculty = async (req, res) => {
 
 export const RegisterStudent = async (req, res) => {
   try {
-    const {
+    let {
       Student_Id,
       Student_Name,
       Student_email,
@@ -165,6 +171,9 @@ export const RegisterStudent = async (req, res) => {
     const findStudent = await studentModel.findOne({
       $or: [{ Student_email }, { Student_Id }],
     });
+
+    const salt = await bcrypt.genSalt(10);
+    Student_Enroll = await bcrypt.hash(Student_Enroll, salt);
 
     if (findStudent) {
       if (findStudent.Student_email === Student_email) {
